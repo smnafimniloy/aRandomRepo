@@ -260,13 +260,22 @@
         }, 2500);
     }
 
-    // YES celebration (robust)
+    // YES celebration (robust) -- updated to HIDE everything except YAY message
     function celebrateYes() {
         if (isAnswered) return;
         isAnswered = true; // block further actions immediately
         yesBtn.disabled = true;
         noBtn.disabled = true;
-        buttonGroup.style.display = 'none';
+
+        // Hide every other text/content inside .card except the responseArea
+        const card = document.getElementById('mainCard');
+        Array.from(card.children).forEach(el => {
+            if (el.id !== 'responseArea') {
+                el.style.display = 'none';
+            }
+        });
+        // Make sure the responseArea is visible
+        responseArea.style.display = '';
 
         // confetti (call with compatibility-fix)
         if (window.canvasConfetti) {
@@ -293,7 +302,7 @@
         responseArea.style.background = "#fee9e6";
         responseArea.style.color = "#b83b5e";
         
-        // Update footer
+        // Update footer (won't show since footer is hidden, but kept for completeness)
         const footer = document.querySelector('.footer-note');
         if (footer) footer.innerHTML = `<i class="fas fa-heart" style="color:#ff4d6d;"></i> So excited for our date on 22 May, Rajshahi! <i class="fas fa-heart" style="color:#ff4d6d;"></i>`;
     }
