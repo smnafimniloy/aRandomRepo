@@ -218,11 +218,13 @@
 </div>
 
 <script>
+    // Make confetti always available as window.canvasConfetti (compatibility fix)
+    window.canvasConfetti = window.confetti || window.canvasConfetti;
+
     const yesBtn = document.getElementById('yesButton');
     const noBtn = document.getElementById('noButton');
     const responseArea = document.getElementById('responseArea');
     const buttonGroup = document.getElementById('buttonGroup');
-    const mainCard = document.getElementById('mainCard');
     let isAnswered = false;
 
     // floating hearts background
@@ -266,11 +268,13 @@
         noBtn.disabled = true;
         buttonGroup.style.display = 'none';
 
-        // confetti
-        canvasConfetti({ particleCount: 200, spread: 100, origin: { y: 0.6 }, startVelocity: 20, colors: ['#ff6b81', '#ffb347', '#ff4d6d'] });
-        canvasConfetti({ particleCount: 120, spread: 70, origin: { y: 0.7, x: 0.3 }, startVelocity: 22 });
-        canvasConfetti({ particleCount: 120, spread: 70, origin: { y: 0.7, x: 0.7 }, startVelocity: 22 });
-        setTimeout(() => canvasConfetti({ particleCount: 300, spread: 120, origin: { y: 0.5 } }), 200);
+        // confetti (call with compatibility-fix)
+        if (window.canvasConfetti) {
+            window.canvasConfetti({ particleCount: 200, spread: 100, origin: { y: 0.6 }, startVelocity: 20, colors: ['#ff6b81', '#ffb347', '#ff4d6d'] });
+            window.canvasConfetti({ particleCount: 120, spread: 70, origin: { y: 0.7, x: 0.3 }, startVelocity: 22 });
+            window.canvasConfetti({ particleCount: 120, spread: 70, origin: { y: 0.7, x: 0.7 }, startVelocity: 22 });
+            setTimeout(() => window.canvasConfetti({ particleCount: 300, spread: 120, origin: { y: 0.5 } }), 200);
+        }
 
         // cheerful message
         responseArea.innerHTML = `
@@ -308,7 +312,9 @@
         showTempMessage(randomMsg);
         noBtn.classList.add('shake-btn');
         setTimeout(() => noBtn.classList.remove('shake-btn'), 500);
-        canvasConfetti({ particleCount: 20, spread: 45, origin: { y: 0.75, x: 0.7 }, startVelocity: 10, colors: ['#ff99cc', '#ffb3ba'], shapes: ['heart'] });
+        if (window.canvasConfetti) {
+            window.canvasConfetti({ particleCount: 20, spread: 45, origin: { y: 0.75, x: 0.7 }, startVelocity: 10, colors: ['#ff99cc', '#ffb3ba'], shapes: ['heart'] });
+        }
     }
 
     // event listeners
