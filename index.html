@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>💖 A Special Date for You 💖</title>
-    <!-- Google Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
@@ -13,10 +12,8 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* No user-select issues, but keep tap highlight clean */
             -webkit-tap-highlight-color: transparent;
         }
-
         body {
             min-height: 100vh;
             background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 55%, #fad0c4 100%);
@@ -27,10 +24,7 @@
             padding: 1rem;
             position: relative;
             overflow-x: hidden;
-            cursor: default;
         }
-
-        /* Floating hearts background (animated) */
         .floating-hearts-bg {
             position: fixed;
             top: 0;
@@ -41,7 +35,6 @@
             z-index: 0;
             overflow: hidden;
         }
-
         .heart-bg {
             position: absolute;
             color: rgba(255, 105, 180, 0.25);
@@ -51,19 +44,10 @@
             user-select: none;
             pointer-events: none;
         }
-
         @keyframes floatUp {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-120vh) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
         }
-
-        /* main card */
         .card {
             background: rgba(255, 248, 245, 0.97);
             backdrop-filter: blur(2px);
@@ -78,28 +62,23 @@
             position: relative;
             border: 1px solid rgba(255, 215, 215, 0.8);
         }
-
         .heart-icon {
             font-size: 3.2rem;
             animation: pulse 1.5s infinite;
             display: inline-block;
             margin-bottom: 0.2rem;
         }
-
         @keyframes pulse {
             0% { transform: scale(1); opacity: 0.8; }
             50% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 8px #ff4d6d; }
             100% { transform: scale(1); opacity: 0.8; }
         }
-
         h1 {
             font-size: 1.9rem;
             font-weight: 700;
             color: #c44569;
-            letter-spacing: -0.3px;
             margin: 0.5rem 0 0.2rem;
         }
-
         .intro {
             font-size: 1rem;
             font-weight: 600;
@@ -110,7 +89,6 @@
             border-radius: 50px;
             margin: 0.5rem 0 0.8rem;
         }
-
         .date-location {
             background: #ffe5e5;
             border-radius: 60px;
@@ -124,12 +102,10 @@
             font-size: 1rem;
             color: #b83b5e;
         }
-
         .date-location i {
             margin-right: 6px;
             color: #f06292;
         }
-
         .question {
             font-size: 1.7rem;
             font-weight: 800;
@@ -138,10 +114,7 @@
             -webkit-background-clip: text;
             color: transparent;
             margin: 0.5rem 0 1.2rem;
-            padding: 0 0.5rem;
-            letter-spacing: -0.2px;
         }
-
         .buttons {
             display: flex;
             justify-content: center;
@@ -149,7 +122,6 @@
             flex-wrap: wrap;
             margin: 0.8rem 0 1rem;
         }
-
         .btn {
             font-family: 'Quicksand', sans-serif;
             font-size: 1.3rem;
@@ -167,48 +139,32 @@
             min-width: 170px;
             justify-content: center;
         }
-
         .yes {
             background: #ff6b81;
             color: white;
             border-bottom: 4px solid #c44569;
         }
-
-        .yes:active {
-            transform: translateY(2px);
-            background: #ff4757;
-        }
-
+        .yes:active { transform: translateY(2px); background: #ff4757; }
         .no {
             background: #b2bec3;
             color: #2d3436;
             border-bottom: 4px solid #636e72;
         }
-
-        .no:active {
-            transform: translateY(2px);
-            background: #dfe6e9;
-        }
-
-        /* Shake animation for No button */
-        .shake-btn {
-            animation: shake 0.4s ease-in-out 0s 2;
-        }
-
+        .no:active { transform: translateY(2px); background: #dfe6e9; }
+        .shake-btn { animation: shake 0.4s ease-in-out 0s 2; }
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-6px); }
             75% { transform: translateX(6px); }
         }
-
         .response-message {
-            min-height: 85px;
+            min-height: 100px;
             margin: 1rem 0 0.6rem;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: #c44569;
             background: #fff0f0;
-            padding: 12px 14px;
+            padding: 14px 16px;
             border-radius: 48px;
             transition: all 0.2s;
             display: flex;
@@ -217,7 +173,6 @@
             gap: 8px;
             flex-wrap: wrap;
         }
-
         .footer-note {
             margin-top: 1.2rem;
             font-size: 0.8rem;
@@ -226,121 +181,59 @@
             border-top: 1px dashed #ffcdd6;
             padding-top: 0.8rem;
         }
-
         .celebration-box {
             background: transparent;
-            border-radius: 48px;
-            padding: 0.3rem;
         }
-
-        /* Smartphone-specific fine-tuning */
         @media (max-width: 550px) {
-            .card {
-                padding: 1.5rem 1.2rem;
-                border-radius: 45px;
-            }
-            h1 {
-                font-size: 1.6rem;
-            }
-            .question {
-                font-size: 1.5rem;
-            }
-            .btn {
-                font-size: 1.2rem;
-                padding: 10px 20px;
-                min-width: 150px;
-            }
-            .date-location {
-                font-size: 0.9rem;
-                gap: 0.8rem;
-                padding: 0.6rem;
-            }
-            .heart-icon {
-                font-size: 2.8rem;
-            }
-            .response-message {
-                font-size: 1rem;
-                padding: 10px 12px;
-            }
+            .card { padding: 1.5rem 1.2rem; }
+            h1 { font-size: 1.6rem; }
+            .question { font-size: 1.5rem; }
+            .btn { font-size: 1.2rem; padding: 10px 20px; min-width: 150px; }
+            .date-location { font-size: 0.9rem; gap: 0.8rem; }
+            .response-message { font-size: 1rem; }
         }
-
-        /* Even smaller devices */
         @media (max-width: 420px) {
-            .btn {
-                font-size: 1.1rem;
-                padding: 8px 18px;
-                min-width: 130px;
-            }
-            .question {
-                font-size: 1.3rem;
-            }
+            .btn { font-size: 1.1rem; padding: 8px 18px; min-width: 130px; }
         }
-
-        button:disabled {
-            opacity: 0.6;
-            transform: none;
-            cursor: default;
-        }
+        button:disabled { opacity: 0.6; cursor: default; }
     </style>
 </head>
 <body>
-
 <div class="floating-hearts-bg" id="floatingHearts"></div>
-
 <div class="card" id="mainCard">
-    <div class="heart-icon">
-        <i class="fas fa-heart" style="color: #ff4d6d;"></i>
-    </div>
+    <div class="heart-icon"><i class="fas fa-heart" style="color: #ff4d6d;"></i></div>
     <h1>Hey Beautiful,</h1>
-    <div class="intro">
-        <i class="fas fa-star-of-life"></i> a little question for you <i class="fas fa-star-of-life"></i>
-    </div>
-    
+    <div class="intro"><i class="fas fa-star-of-life"></i> a little question for you <i class="fas fa-star-of-life"></i></div>
     <div class="date-location">
         <span><i class="fas fa-calendar-alt"></i> 22nd May</span>
-        <span><i class="fas fa-map-marker-alt"></i> Rajshahi — City of Mangoes & Love</span>
+        <span><i class="fas fa-map-marker-alt"></i> Rajshahi — City of Love</span>
     </div>
-    
-    <div class="question">
-        ✨ Will you go on a date with me? ✨
-    </div>
-    
+    <div class="question">✨ Will you go on a date with me? ✨</div>
     <div class="buttons" id="buttonGroup">
         <button class="btn yes" id="yesButton"><i class="fas fa-check-circle"></i> Yes, I'd love to!</button>
         <button class="btn no" id="noButton"><i class="fas fa-heart-broken"></i> No</button>
     </div>
-    
-    <div id="responseArea" class="response-message">
-        🌸 waiting for your sweet answer... 🌸
-    </div>
-    
-    <div class="footer-note">
-        <i class="fas fa-mango"></i> Rajshahi awaits us — 22 May, full of joy <i class="fas fa-mango"></i>
-    </div>
+    <div id="responseArea" class="response-message">🌸 waiting for your sweet answer... 🌸</div>
+    <div class="footer-note"><i class="fas fa-heart" style="color:#ff4d6d;"></i> Rajshahi awaits us — 22 May, full of joy <i class="fas fa-heart" style="color:#ff4d6d;"></i></div>
 </div>
 
 <script>
-    // DOM elements
     const yesBtn = document.getElementById('yesButton');
     const noBtn = document.getElementById('noButton');
     const responseArea = document.getElementById('responseArea');
     const buttonGroup = document.getElementById('buttonGroup');
     const mainCard = document.getElementById('mainCard');
-    
     let isAnswered = false;
-    
-    // --- Create floating hearts background
+
+    // floating hearts background
     function createFloatingHearts() {
         const container = document.getElementById('floatingHearts');
-        const heartCount = 22;
-        const icons = ['❤️', '💖', '💗', '💓', '🌸', '🌹', '💕', '💞', '🌺'];
-        for (let i = 0; i < heartCount; i++) {
+        const icons = ['❤️', '💖', '💗', '💓', '🌸', '🌹', '💕', '💞'];
+        for (let i = 0; i < 22; i++) {
             const heartDiv = document.createElement('div');
             heartDiv.classList.add('heart-bg');
-            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
-            heartDiv.innerHTML = randomIcon;
-            const size = Math.floor(Math.random() * 25) + 16;
-            heartDiv.style.fontSize = size + 'px';
+            heartDiv.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            heartDiv.style.fontSize = (Math.random() * 25 + 16) + 'px';
             heartDiv.style.left = Math.random() * 100 + '%';
             heartDiv.style.animationDuration = Math.random() * 8 + 6 + 's';
             heartDiv.style.animationDelay = Math.random() * 10 + 's';
@@ -349,160 +242,108 @@
         }
     }
     createFloatingHearts();
-    
-    let messageTimeout;
-    function showTemporaryMessage(msg, isPlayful = false) {
-        if (messageTimeout) clearTimeout(messageTimeout);
+
+    // temporary message (only for No button fun)
+    let msgTimeout;
+    function showTempMessage(msg) {
+        if (msgTimeout) clearTimeout(msgTimeout);
+        if (isAnswered) return;
         responseArea.innerHTML = `<i class="fas fa-heartbeat"></i> ${msg} <i class="fas fa-heartbeat"></i>`;
-        responseArea.style.background = isPlayful ? "#ffe6f0" : "#fff0f0";
-        responseArea.style.color = "#c44569";
-        messageTimeout = setTimeout(() => {
+        responseArea.style.background = "#ffe6f0";
+        msgTimeout = setTimeout(() => {
             if (!isAnswered) {
-                responseArea.innerHTML = `🌸 dreaming about our Rajshahi date... say Yes! 🌸`;
+                responseArea.innerHTML = "🌸 waiting for your sweet answer... 🌸";
                 responseArea.style.background = "#fff0f0";
             }
         }, 2500);
     }
-    
-    // --- Celebration on YES
+
+    // YES celebration (cheerful & removes waiting message)
     function celebrateYes() {
         if (isAnswered) return;
         isAnswered = true;
-        
         buttonGroup.style.display = 'none';
-        
-        // Confetti burst
+
+        // confetti
         canvasConfetti({ particleCount: 200, spread: 100, origin: { y: 0.6 }, startVelocity: 20, colors: ['#ff6b81', '#ffb347', '#ff4d6d'] });
         canvasConfetti({ particleCount: 120, spread: 70, origin: { y: 0.7, x: 0.3 }, startVelocity: 22 });
         canvasConfetti({ particleCount: 120, spread: 70, origin: { y: 0.7, x: 0.7 }, startVelocity: 22 });
         setTimeout(() => canvasConfetti({ particleCount: 300, spread: 120, origin: { y: 0.5 } }), 200);
-        
+
+        // cheerful message (no mango)
         responseArea.innerHTML = `
-            <div class="celebration-box">
-                <i class="fas fa-heart" style="font-size: 2rem; color:#ff4d6d;"></i> 
-                <strong style="font-size:1.5rem;">YES! 💞</strong> 
-                <i class="fas fa-heart" style="font-size: 2rem; color:#ff4d6d;"></i><br/>
-                <span style="font-size:1.15rem;">You made me so happy! 🥰</span><br/>
-                <span style="font-size:1rem; background:#ffe0e0; display:inline-block; padding:0.4rem 1rem; border-radius: 40px; margin-top: 0.6rem;">
-                    📅 22nd May · 📍 Rajshahi — It's a DATE!
+            <div style="line-height:1.4;">
+                <i class="fas fa-heart" style="font-size: 2rem; color:#ff4d6d;"></i>
+                <strong style="font-size:1.6rem; display:block;">YAY! 💞</strong>
+                <span style="font-size:1.2rem;">You just made me the happiest person! 🥰</span><br/>
+                <span style="background:#ffe0e0; display:inline-block; padding:0.5rem 1rem; border-radius: 50px; margin-top: 0.6rem;">
+                    📅 22nd May · 📍 Rajshahi – It's a DATE!
                 </span>
-                <div style="margin-top: 0.6rem; font-size:0.95rem;">
-                    🌟 I'll plan something. Get ready for smiles! 🌟
+                <div style="margin-top: 0.7rem; font-size:1rem;">
+                    ✨ I can't wait to see you! Get ready for a magical day ✨
                 </div>
             </div>
         `;
         responseArea.style.background = "#fee9e6";
+        responseArea.style.color = "#b83b5e";
         
-        const footerNote = document.querySelector('.footer-note');
-        if (footerNote) footerNote.innerHTML = `<i class="fas fa-heart" style="color:#ff4d6d;"></i> Can't wait to see you on 22 May, Rajshahi! <i class="fas fa-heart" style="color:#ff4d6d;"></i>`;
+        // change footer to remove any mango (already none, but update to be safe)
+        const footer = document.querySelector('.footer-note');
+        if (footer) footer.innerHTML = `<i class="fas fa-heart" style="color:#ff4d6d;"></i> So excited for our date on 22 May, Rajshahi! <i class="fas fa-heart" style="color:#ff4d6d;"></i>`;
         
         yesBtn.disabled = true;
         noBtn.disabled = true;
     }
-    
-    // --- Playful No reaction (never accepts a real No)
-    function playfulNoReaction() {
+
+    // playful No button (still no mango)
+    function playfulNo() {
         if (isAnswered) return;
-        
-        const noMessages = [
+        const msgs = [
             "💕 Nice try! I know your heart says Yes! 💕",
             "🌸 That button is just for fun — click Yes, love! 🌸",
             "😘 You can't say No to a Rajshahi sunset date! 😘",
-            "🌹 But I'll bring your favourite flowers! Press Yes? 🌹",
-            "💖 No way! Click Yes and let's make memories 💖",
-            "🥭 Mangoes, you and me — say Yes already! 🥭"
+            "🌹 I'll bring your favourite flowers! Press Yes? 🌹",
+            "💖 No way! Click Yes and let's make memories 💖"
         ];
-        const randomMsg = noMessages[Math.floor(Math.random() * noMessages.length)];
-        showTemporaryMessage(randomMsg, true);
-        
+        const randomMsg = msgs[Math.floor(Math.random() * msgs.length)];
+        showTempMessage(randomMsg);
         noBtn.classList.add('shake-btn');
         setTimeout(() => noBtn.classList.remove('shake-btn'), 500);
-        
-        // extra small heart confetti on No tap (cute!)
-        canvasConfetti({
-            particleCount: 20,
-            spread: 45,
-            origin: { y: 0.75, x: 0.7 },
-            startVelocity: 10,
-            colors: ['#ff99cc', '#ffb3ba'],
-            shapes: ['heart']
-        });
+        canvasConfetti({ particleCount: 20, spread: 45, origin: { y: 0.75, x: 0.7 }, startVelocity: 10, colors: ['#ff99cc', '#ffb3ba'], shapes: ['heart'] });
     }
-    
-    // --- Event listeners for touch & click (mobile optimized)
-    yesBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (!isAnswered) celebrateYes();
-    });
-    yesBtn.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        if (!isAnswered) celebrateYes();
-    });
-    
-    noBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        playfulNoReaction();
-    });
-    noBtn.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        playfulNoReaction();
-    });
-    
-    // --- Hover effects disabled on mobile automatically, but keep for desktop
-    // No additional hover that might cause sticky taps
-    
-    // --- Gentle reminder if user takes time
-    let remindTimer;
-    function startReminder() {
-        if (isAnswered) return;
-        remindTimer = setTimeout(() => {
-            if (!isAnswered) {
-                responseArea.innerHTML = "💌 Hey love, my heart is waiting for your 'Yes'! 💌";
-                responseArea.style.background = "#fff0f0";
-                setTimeout(() => {
-                    if (!isAnswered) responseArea.innerHTML = "🌸 waiting for your sweet answer... 🌸";
-                }, 3500);
-            }
-        }, 14000);
-    }
-    startReminder();
-    
-    // Additional floating hearts injection to keep background lively
-    setInterval(() => {
-        const heartsContainer = document.getElementById('floatingHearts');
-        if (heartsContainer && heartsContainer.children.length < 45) {
-            const newHeart = document.createElement('div');
-            newHeart.classList.add('heart-bg');
-            const iconsSet = ['❤️', '💖', '🌸', '💓', '🌹'];
-            newHeart.innerHTML = iconsSet[Math.floor(Math.random() * iconsSet.length)];
-            newHeart.style.fontSize = Math.floor(Math.random() * 28 + 14) + 'px';
-            newHeart.style.left = Math.random() * 100 + '%';
-            newHeart.style.animationDuration = Math.random() * 10 + 5 + 's';
-            newHeart.style.opacity = Math.random() * 0.45 + 0.15;
-            heartsContainer.appendChild(newHeart);
-            setTimeout(() => { if (newHeart && newHeart.remove) newHeart.remove(); }, 13000);
-        }
-    }, 5000);
-    
-    // Initial playful message
+
+    // event listeners
+    yesBtn.addEventListener('click', (e) => { e.preventDefault(); if (!isAnswered) celebrateYes(); });
+    yesBtn.addEventListener('touchstart', (e) => { e.preventDefault(); if (!isAnswered) celebrateYes(); });
+    noBtn.addEventListener('click', (e) => { e.preventDefault(); playfulNo(); });
+    noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); playfulNo(); });
+
+    // gentle reminder
     setTimeout(() => {
         if (!isAnswered) {
-            responseArea.innerHTML = "💭 22 May in Rajshahi... sunset & you? A perfect dream 💭";
+            responseArea.innerHTML = "💌 Hey love, my heart is waiting for your 'Yes'! 💌";
+            responseArea.style.background = "#fff0f0";
             setTimeout(() => {
                 if (!isAnswered) responseArea.innerHTML = "🌸 waiting for your sweet answer... 🌸";
-            }, 3000);
+            }, 3500);
         }
-    }, 800);
-    
-    // Make card glow slightly on tap (just for fun)
-    yesBtn.addEventListener('touchstart', () => {
-        mainCard.style.transform = "scale(1.01)";
-        setTimeout(() => { if (!isAnswered) mainCard.style.transform = ""; }, 150);
-    });
-    noBtn.addEventListener('touchstart', () => {
-        mainCard.style.transform = "scale(0.99)";
-        setTimeout(() => { if (!isAnswered) mainCard.style.transform = ""; }, 150);
-    });
+    }, 12000);
+
+    // keep adding floating hearts
+    setInterval(() => {
+        const container = document.getElementById('floatingHearts');
+        if (container && container.children.length < 45) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-bg');
+            heart.innerHTML = ['❤️','💖','🌸','💓','🌹'][Math.floor(Math.random()*5)];
+            heart.style.fontSize = (Math.random() * 28 + 14) + 'px';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = Math.random() * 10 + 5 + 's';
+            heart.style.opacity = Math.random() * 0.45 + 0.15;
+            container.appendChild(heart);
+            setTimeout(() => heart.remove(), 13000);
+        }
+    }, 5000);
 </script>
 </body>
 </html>
