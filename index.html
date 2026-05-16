@@ -200,7 +200,7 @@
 </head>
 <body>
 <div class="floating-hearts-bg" id="floatingHearts"></div>
-<div class="card" id="mainCard">
+<div class="card" id="mainCard" role="main" aria-labelledby="main-question">
     <div class="heart-icon"><i class="fas fa-heart" style="color: #ff4d6d;"></i></div>
     <h1>Hey Beautiful,</h1>
     <div class="intro"><i class="fas fa-star-of-life"></i> a little question for you <i class="fas fa-star-of-life"></i></div>
@@ -208,12 +208,12 @@
         <span><i class="fas fa-calendar-alt"></i> 22nd May</span>
         <span><i class="fas fa-map-marker-alt"></i> Rajshahi — City of Love</span>
     </div>
-    <div class="question">✨ Will you go on a date with me? ✨</div>
+    <div class="question" id="main-question" tabindex="0">✨ Will you go on a date with me? ✨</div>
     <div class="buttons" id="buttonGroup">
-        <button class="btn yes" id="yesButton"><i class="fas fa-check-circle"></i> Yes, I'd love to!</button>
-        <button class="btn no" id="noButton"><i class="fas fa-heart-broken"></i> No</button>
+        <button class="btn yes" id="yesButton" type="button" aria-label="Yes, I'd love to go on a date!"><i class="fas fa-check-circle"></i> Yes, I'd love to!</button>
+        <button class="btn no" id="noButton" type="button" aria-label="No"><i class="fas fa-heart-broken"></i> No</button>
     </div>
-    <div id="responseArea" class="response-message">🌸 waiting for your sweet answer... 🌸</div>
+    <div id="responseArea" class="response-message" role="status" aria-live="polite">🌸 waiting for your sweet answer... 🌸</div>
     <div class="footer-note"><i class="fas fa-heart" style="color:#ff4d6d;"></i> Rajshahi awaits us — 22 May, full of joy <i class="fas fa-heart" style="color:#ff4d6d;"></i></div>
 </div>
 
@@ -258,10 +258,12 @@
         }, 2500);
     }
 
-    // YES celebration (cheerful & removes waiting message)
+    // YES celebration (robust)
     function celebrateYes() {
         if (isAnswered) return;
-        isAnswered = true;
+        isAnswered = true; // block further actions immediately
+        yesBtn.disabled = true;
+        noBtn.disabled = true;
         buttonGroup.style.display = 'none';
 
         // confetti
@@ -270,7 +272,7 @@
         canvasConfetti({ particleCount: 120, spread: 70, origin: { y: 0.7, x: 0.7 }, startVelocity: 22 });
         setTimeout(() => canvasConfetti({ particleCount: 300, spread: 120, origin: { y: 0.5 } }), 200);
 
-        // cheerful message (no mango)
+        // cheerful message
         responseArea.innerHTML = `
             <div style="line-height:1.4;">
                 <i class="fas fa-heart" style="font-size: 2rem; color:#ff4d6d;"></i>
@@ -287,12 +289,9 @@
         responseArea.style.background = "#fee9e6";
         responseArea.style.color = "#b83b5e";
         
-        // change footer to remove any mango (already none, but update to be safe)
+        // Update footer
         const footer = document.querySelector('.footer-note');
         if (footer) footer.innerHTML = `<i class="fas fa-heart" style="color:#ff4d6d;"></i> So excited for our date on 22 May, Rajshahi! <i class="fas fa-heart" style="color:#ff4d6d;"></i>`;
-        
-        yesBtn.disabled = true;
-        noBtn.disabled = true;
     }
 
     // playful No button (still no mango)
@@ -317,6 +316,20 @@
     yesBtn.addEventListener('touchstart', (e) => { e.preventDefault(); if (!isAnswered) celebrateYes(); });
     noBtn.addEventListener('click', (e) => { e.preventDefault(); playfulNo(); });
     noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); playfulNo(); });
+
+    // Keyboard accessibility for buttons
+    yesBtn.addEventListener('keydown', function(e) {
+        if ((e.key === "Enter" || e.key === " ") && !isAnswered) {
+            e.preventDefault(); 
+            celebrateYes();
+        }
+    });
+    noBtn.addEventListener('keydown', function(e) {
+        if ((e.key === "Enter" || e.key === " ") && !isAnswered) {
+            e.preventDefault(); 
+            playfulNo();
+        }
+    });
 
     // gentle reminder
     setTimeout(() => {
@@ -344,6 +357,7 @@
             setTimeout(() => heart.remove(), 13000);
         }
     }, 5000);
+
 </script>
 </body>
 </html>
